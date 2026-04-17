@@ -31,6 +31,10 @@ public class Position {
 		this.employee = employee;
 	}
 
+	public void removeEmployee() {
+		this.employee = Optional.empty();
+	}
+
 	public boolean isFilled() {
 		return employee.isPresent();
 	}

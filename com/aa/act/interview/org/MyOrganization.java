@@ -27,6 +27,8 @@ public class MyOrganization extends Organization {
 		vpt.addDirectReport(dct);
 		Position s = new Position("Salesperson");
 		vps.addDirectReport(s);
+		Position s2 = new Position("Salesperson");
+		vps.addDirectReport(s2);
 		
 		return ceo;
 	}
@@ -44,6 +46,12 @@ public class MyOrganization extends Organization {
 		myOrg.hire(new Name("Danielle", "Hoover"), "VP Technology");
 		myOrg.hire(new Name("Scape", "Goat"), "VP Infrastructure");
 		myOrg.hire(new Name("Slick", "Willie"), "Salesperson");
+		myOrg.hire(new Name("Slick2", "Willie2"), "Salesperson");
+		System.out.println(myOrg);
+
+		System.out.println(myOrg.vacate(5));
+
+		System.out.println("=== after vacate ===");
 		System.out.println(myOrg);
 	}
 }

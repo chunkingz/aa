@@ -38,6 +38,28 @@ public abstract class Organization {
 		return Optional.empty();
 	}
 
+	public boolean vacate(int id){
+		var res = findPositionById(root, id);
+		if(res.isPresent()) {
+			res.get().removeEmployee();
+			return true;
+		}
+		return false;
+	}
+
+	private Optional<Position> findPositionById(Position current, int id){
+		var emp = current.getEmployee();
+		if(emp.isPresent() && emp.get().getIdentifier() == id){
+			return Optional.of(current);
+		}
+
+		for(Position directReports : current.getDirectReports()){
+			var res = findPositionById(directReports, id);
+			if(res.isPresent()) return res;
+		}
+		return Optional.empty();
+	}
+
 	@Override
 	public String toString() {
 		return printOrganization(root, "");
